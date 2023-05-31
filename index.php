@@ -1,52 +1,53 @@
 <?php
 
-class Movie{
-    public $titolo;
-    public $generi;
-    public $durata;
-
-    public function __construct($_titolo, Generi $_generi, $_durata){
-        $this->titolo = $_titolo;
-        $this->generi = $_generi;
-        $this->durata = $_durata;
-    }
-    public function mario($_titoloUpp){
-        return $this->titolo = 'titolo='. ' ' . strtoupper($_titoloUpp);
-    }
+require_once __DIR__ . '/models/movie.php';
+require_once __DIR__ . '/models/generi.php';
+require_once __DIR__ . '/db.php';
 
 
-}
+// $avengers = new Movie('avengers', new Generi('maiale', 'porco', 'suino'), '2:30');
+// $titanic = new Movie('titanic', new Generi('cavallo', 'giumenta', 'pony'), '3:00');
+// var_dump($avengers , $titanic);
+// echo $avengers->titolo;
+// echo $avengers->generi->genere1;
+// echo $avengers->generi->genere2;
+// echo $avengers->generi->genere3;
+// echo $avengers->durata;
 
-class Generi{
-    public $genere1;
-    public $genere2;
-    public $genere3;
-
-    public function __construct($_genere1 , $_genere2 , $_genere3 ){
-        $this->genere1 = $_genere1;
-        $this->genere2 = $_genere2;
-        $this->genere3 = $_genere3;
-    }
-
-}
-
-$avengers = new Movie('avengers', new Generi('maiale', 'porco', 'suino'), '2:30');
-$titanic = new Movie('titanic', new Generi('cavallo', 'giumenta', 'pony'), '3:00');
-var_dump($avengers , $titanic);
-echo $avengers->titolo;
-echo $avengers->generi->genere1;
-echo $avengers->generi->genere2;
-echo $avengers->generi->genere3;
-echo $avengers->durata;
-
-echo $titanic->titolo;
-echo $titanic->generi->genere1;
-echo $titanic->generi->genere2;
-echo $titanic->generi->genere3;
-echo $titanic->durata;
+// echo $titanic->titolo;
+// echo $titanic->generi->genere1;
+// echo $titanic->generi->genere2;
+// echo $titanic->generi->genere3;
+// echo $titanic->durata;
 
 
-echo $titanic -> mario('titanic');
-var_dump($titanic);
+// echo $titanic -> mario('titanic');
+// var_dump($titanic);
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="display:flex; justify-content:center;">
+        <?php foreach( $arrayFilm as $elem ) { ?>
+            <div style="margin:40px">
+                <h2 style="color:red"><?php echo $elem->titolo; ?></h2>
+                <h3>Generi:</h3>
+                <ul>
+                    <li><?php echo $elem->generi->genere1; ?></li>
+                    <li><?php echo $elem->generi->genere2; ?></li>
+                    <li><?php echo $elem->generi->genere3; ?></li>
+                </ul>
+                <h4>Durata: <?php echo $elem->durata;?></h4>
+            </div>
+        <?php } ?>    
+    </div>
+</body>
+</html>
